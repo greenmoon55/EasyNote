@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">EasyTodo</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_create_todo">CreateTodo</string>
+    <string name="content">Create Todo here!</string>
+    <string name="confirm">Done</string>
+
+</resources>
