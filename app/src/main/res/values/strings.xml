@@ -7,5 +7,6 @@
     <string name="title_activity_create_todo">CreateTodo</string>
     <string name="content">Create Todo here!</string>
     <string name="confirm">Done</string>
+    <string name="empty">No todos</string>
 
 </resources>

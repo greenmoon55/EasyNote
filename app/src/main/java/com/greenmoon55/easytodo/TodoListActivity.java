@@ -1,19 +1,47 @@
 package com.greenmoon55.easytodo;
 
-import android.app.Activity;
+import android.app.ListActivity;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
+
+import java.util.List;
 
 
-public class TodoListActivity extends Activity {
+public class TodoListActivity extends ListActivity {
     private static final int ACTIVITY_CREATE = 0;
+    private volatile List<Todo> todos;
 
+    private class RemoteDataTask extends AsyncTask<Void, Void, Void> {
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            todos = AVService.findTodos();
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void result) {
+            TodoAdapter adapter = new TodoAdapter(TodoListActivity.this, todos);
+            setListAdapter(adapter);
+            registerForContextMenu(getListView());
+            TextView empty = (TextView) findViewById(android.R.id.empty);
+            if (todos != null && !todos.isEmpty()) {
+                empty.setVisibility(View.INVISIBLE);
+            } else {
+                empty.setVisibility(View.VISIBLE);
+            }
+        }
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_todo_list);
+        new RemoteDataTask().execute();
     }
 
 
