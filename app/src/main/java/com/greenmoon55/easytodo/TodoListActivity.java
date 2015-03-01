@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView.*;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.avos.avoscloud.AVException;
@@ -19,6 +20,7 @@ import java.util.List;
 
 public class TodoListActivity extends ListActivity {
     private static final int ACTIVITY_CREATE = 0;
+    private static final int ACTIVITY_EDIT = 1;
 
     private static final int DELETE_ID = Menu.FIRST + 1;
 
@@ -108,6 +110,15 @@ public class TodoListActivity extends ListActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onListItemClick(ListView l, View v, int position, long id) {
+        super.onListItemClick(l, v, position, id);
+        Intent i = new Intent(this, CreateTodo.class);
+        i.putExtra("content", todos.get(position).getString("content"));
+        i.putExtra("objectId", todos.get(position).getObjectId());
+        startActivityForResult(i, ACTIVITY_EDIT);
     }
 
     private void createTodo() {

@@ -2,6 +2,7 @@ package com.greenmoon55.easytodo;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -24,6 +25,15 @@ public class CreateTodo extends Activity {
         setContentView(R.layout.activity_create_todo);
 
         contentText = (EditText) findViewById(R.id.content);
+
+        Intent intent = getIntent();
+        Bundle extras = intent.getExtras();
+        if (extras != null) {
+            String content = extras.getString("content");
+            objectId = extras.getString("objectId");
+
+            contentText.setText(content);
+        }
 
         Button confirmButton = (Button) findViewById(R.id.confirm);
         confirmButton.setOnClickListener(new View.OnClickListener() {
