@@ -34,26 +34,6 @@ public class CreateTodo extends Activity {
 
             contentText.setText(content);
         }
-
-        Button confirmButton = (Button) findViewById(R.id.confirm);
-        confirmButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SaveCallback saveCallback = new SaveCallback() {
-                    @Override
-                    public void done(AVException e) {
-                        Bundle bundle = new Bundle();
-                        bundle.putBoolean("success", e == null);
-                        Intent intent = new Intent();
-                        intent.putExtras(bundle);
-                        setResult(RESULT_OK, intent);
-                        finish();
-                    }
-                };
-                String content = contentText.getText().toString();
-                AVService.createOrUpdateTodo(objectId, content, saveCallback);
-            }
-        });
     }
 
 
@@ -70,6 +50,22 @@ public class CreateTodo extends Activity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
+
+        if (id == R.id.confirm) {
+            SaveCallback saveCallback = new SaveCallback() {
+                @Override
+                public void done(AVException e) {
+                    Bundle bundle = new Bundle();
+                    bundle.putBoolean("success", e == null);
+                    Intent intent = new Intent();
+                    intent.putExtras(bundle);
+                    setResult(RESULT_OK, intent);
+                    finish();
+                }
+            };
+            String content = contentText.getText().toString();
+            AVService.createOrUpdateTodo(objectId, content, saveCallback);
+        }
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
