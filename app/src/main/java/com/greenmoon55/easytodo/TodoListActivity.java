@@ -14,6 +14,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.avos.avoscloud.AVException;
+import com.avos.avoscloud.AVUser;
 
 import java.util.List;
 
@@ -21,6 +22,7 @@ import java.util.List;
 public class TodoListActivity extends ListActivity {
     private static final int ACTIVITY_CREATE = 0;
     private static final int ACTIVITY_EDIT = 1;
+    private static final int ACTIVITY_AUTH = 2;
 
     private static final int DELETE_ID = Menu.FIRST + 1;
 
@@ -50,6 +52,10 @@ public class TodoListActivity extends ListActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (AVUser.getCurrentUser() == null) {
+            Intent intent = new Intent(TodoListActivity.this, AuthActivity.class);
+            startActivityForResult(intent, ACTIVITY_AUTH);
+        }
         setContentView(R.layout.activity_todo_list);
         new RemoteDataTask().execute();
     }
