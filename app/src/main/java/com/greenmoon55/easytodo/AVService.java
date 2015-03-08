@@ -18,6 +18,7 @@ import java.util.List;
  */
 public class AVService {
     public static void AVInit(Context ctx) {
+        AVOSCloud.setDebugLogEnabled(true);
         AVOSCloud.initialize(ctx, "u468p378t89hoh08c5sw54vc1fxkgu4qn3yryp4si3n22sfd",
                 "jl1yeddvb4swgeamix5h4pyl7errwh3uyinwkj56ukkouuyv");
         AVObject.registerSubclass(Todo.class);

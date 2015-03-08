@@ -6,8 +6,8 @@ android {
 
     defaultConfig {
         applicationId "com.greenmoon55.easytodo"
-        minSdkVersion 21
-        targetSdkVersion 21
+        minSdkVersion 16
+        targetSdkVersion 16
         versionCode 1
         versionName "1.0"
     }
