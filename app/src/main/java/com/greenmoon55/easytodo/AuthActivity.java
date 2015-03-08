@@ -29,11 +29,11 @@ public class AuthActivity extends Activity {
                 SNS.loginWithAuthData(base.userInfo(), new LogInCallback<AVUser>() {
                     @Override
                     public void done(final AVUser user, AVException e) {
-                    if (e == null) {
-                        System.out.println(AVUser.getCurrentUser());
-                    } else {
-                        System.out.println("create new user with auth data error: " + e.getMessage());
-                    }
+                        if (e == null) {
+                            System.out.println(AVUser.getCurrentUser());
+                        } else {
+                            System.out.println("create new user with auth data error: " + e.getMessage());
+                        }
                         finish();
                     }
                 });
