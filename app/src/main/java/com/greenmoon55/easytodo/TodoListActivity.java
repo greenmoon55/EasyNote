@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.AdapterView.*;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVUser;
@@ -125,6 +126,24 @@ public class TodoListActivity extends ListActivity {
         i.putExtra("content", todos.get(position).getString("content"));
         i.putExtra("objectId", todos.get(position).getObjectId());
         startActivityForResult(i, ACTIVITY_EDIT);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        super.onActivityResult(requestCode, resultCode, intent);
+        if (intent == null) {
+            return;
+        }
+        // 暂时提示信息
+        boolean success = intent.getBooleanExtra("success", true);
+        Toast toast = null;
+        if (success) {
+            // 重新查询，刷新ListView
+            new RemoteDataTask().execute();
+        } else {
+            toast = Toast.makeText(getApplicationContext(), "Save failed!", Toast.LENGTH_SHORT);
+            toast.show();
+        }
     }
 
     private void createTodo() {
