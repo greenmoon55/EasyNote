@@ -21,9 +21,9 @@ import java.util.List;
 
 
 public class NoteListActivity extends ListActivity {
-    private static final int ACTIVITY_CREATE = 0;
-    private static final int ACTIVITY_EDIT = 1;
-    private static final int ACTIVITY_AUTH = 2;
+    public static final int ACTIVITY_CREATE = 0;
+    public static final int ACTIVITY_EDIT = 1;
+    public static final int ACTIVITY_AUTH = 2;
 
     private static final int DELETE_ID = Menu.FIRST + 1;
 
@@ -120,6 +120,7 @@ public class NoteListActivity extends ListActivity {
         Intent i = new Intent(this, CreateNote.class);
         i.putExtra("content", notes.get(position).getString("content"));
         i.putExtra("objectId", notes.get(position).getObjectId());
+        i.putExtra("requestCode", ACTIVITY_EDIT);
         startActivityForResult(i, ACTIVITY_EDIT);
     }
 

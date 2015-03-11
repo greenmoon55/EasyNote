@@ -28,8 +28,16 @@ public class CreateNote extends Activity {
         if (extras != null) {
             String content = extras.getString("content");
             objectId = extras.getString("objectId");
-
             contentText.setText(content);
+
+            if (intent.hasExtra("requestCode")) {
+                int requestCode = extras.getInt("requestCode");
+
+                // Is there a better way?
+                if (requestCode == NoteListActivity.ACTIVITY_EDIT) {
+                    this.setTitle(R.string.title_activity_edit_note);
+                }
+            }
         }
 
         // Set cursor to the end of the text

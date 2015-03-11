@@ -7,4 +7,6 @@
     <string name="empty">No notes</string>
     <string name="title_activity_auth">AuthActivity</string>
     <string name="title_activity_create_note">Create Note</string>
+    <string name="title_activity_edit_note">Edit Note</string>
+
 </resources>
