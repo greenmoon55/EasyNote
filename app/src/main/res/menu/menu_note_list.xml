@@ -3,5 +3,7 @@
     tools:context=".TodoListActivity">
     <item
         android:id="@+id/create_note"
+        android:icon="@drawable/ic_action_new"
+        android:showAsAction="always"
         android:title="Create Note" />
 </menu>
