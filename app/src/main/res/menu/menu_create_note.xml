@@ -1,9 +1,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".TodoListActivity">
+    tools:context="com.greenmoon55.easynote.CreateNote">
     <item
-        android:id="@+id/create_todo"
-        android:title="Create Todo" />
+        android:id="@+id/confirm"
+        android:showAsAction="always"
+        android:title="Done" />
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"

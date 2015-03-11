@@ -1,4 +1,4 @@
-package com.greenmoon55.easytodo;
+package com.greenmoon55.easynote;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

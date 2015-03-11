@@ -1,4 +1,4 @@
-package com.greenmoon55.easytodo;
+package com.greenmoon55.easynote;
 
 import android.content.Context;
 import android.text.TextUtils;
@@ -21,26 +21,26 @@ public class AVService {
         AVOSCloud.setDebugLogEnabled(true);
         AVOSCloud.initialize(ctx, "u468p378t89hoh08c5sw54vc1fxkgu4qn3yryp4si3n22sfd",
                 "jl1yeddvb4swgeamix5h4pyl7errwh3uyinwkj56ukkouuyv");
-        AVObject.registerSubclass(Todo.class);
+        AVObject.registerSubclass(Note.class);
     }
 
     public static void createOrUpdateTodo(String objectId, String content, SaveCallback saveCallback) {
-        Todo todo = new Todo();
+        Note note = new Note();
         if (!TextUtils.isEmpty(objectId)) {
-            todo.setObjectId(objectId);
+            note.setObjectId(objectId);
         }
-        todo.setContent(content);
-        todo.saveInBackground(saveCallback);
+        note.setContent(content);
+        note.saveInBackground(saveCallback);
     }
 
-    public static List<Todo> findTodos() {
-        AVQuery<Todo> query = AVQuery.getQuery(Todo.class);
+    public static List<Note> findNotes() {
+        AVQuery<Note> query = AVQuery.getQuery(Note.class);
         query.orderByDescending("updatedAt");
         query.limit(1000);
         try {
             return query.find();
         } catch (AVException e) {
-            Log.e("tag", "Query todos failed.", e);
+            Log.e("tag", "Query notes failed.", e);
             return Collections.emptyList();
         }
     }

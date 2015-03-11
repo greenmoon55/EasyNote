@@ -1,11 +1,11 @@
-package com.greenmoon55.easytodo;
+package com.greenmoon55.easynote;
 
 import android.app.Application;
 
 /**
  * Created by greenmoon55 on 2015/2/21.
  */
-public class EasyTodoApplication extends Application {
+public class EasyNoteApplication extends Application {
 
     @Override
     public void onCreate() {

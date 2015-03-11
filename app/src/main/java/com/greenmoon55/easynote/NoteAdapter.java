@@ -1,4 +1,4 @@
-package com.greenmoon55.easytodo;
+package com.greenmoon55.easynote;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -12,24 +12,24 @@ import java.util.List;
 /**
  * Created by greenmoon55 on 2015/2/22.
  */
-public class TodoAdapter extends BaseAdapter {
-    List<Todo> todos;
+public class NoteAdapter extends BaseAdapter {
+    List<Note> notes;
     Context context;
 
-    public TodoAdapter(Context context, List<Todo> todos) {
+    public NoteAdapter(Context context, List<Note> notes) {
         this.context = context;
-        this.todos = todos;
+        this.notes = notes;
     }
 
     @Override
     public int getCount() {
-        return todos == null? 0: todos.size();
+        return notes == null? 0: notes.size();
     }
 
     @Override
     public Object getItem(int position) {
-        if (todos != null) {
-            return todos.get(position);
+        if (notes != null) {
+            return notes.get(position);
         } else {
             return null;
         }
@@ -45,22 +45,22 @@ public class TodoAdapter extends BaseAdapter {
         ViewHolder holder;
 
         if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.todo_row, null);
+            convertView = LayoutInflater.from(context).inflate(R.layout.note_row, null);
             holder = new ViewHolder();
-            holder.todo = (TextView) convertView.findViewById(R.id.text);
+            holder.note = (TextView) convertView.findViewById(R.id.text);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        Todo todo = todos.get(position);
-        if (todo != null) {
-            holder.todo.setText(todo.getContent());
+        Note note = notes.get(position);
+        if (note != null) {
+            holder.note.setText(note.getContent());
         }
         return convertView;
     }
 
     static class ViewHolder {
-        TextView todo;
+        TextView note;
     }
 }

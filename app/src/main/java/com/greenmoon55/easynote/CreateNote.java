@@ -1,20 +1,17 @@
-package com.greenmoon55.easytodo;
+package com.greenmoon55.easynote;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.SaveCallback;
 
 
-public class CreateTodo extends Activity {
+public class CreateNote extends Activity {
 
     private EditText contentText;
     private String objectId;
@@ -22,7 +19,7 @@ public class CreateTodo extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_todo);
+        setContentView(R.layout.activity_create_note);
 
         contentText = (EditText) findViewById(R.id.content);
 
@@ -40,7 +37,7 @@ public class CreateTodo extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_create_todo, menu);
+        getMenuInflater().inflate(R.menu.menu_create_note, menu);
         return true;
     }
 

@@ -1,10 +1,8 @@
-package com.greenmoon55.easytodo;
+package com.greenmoon55.easynote;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVUser;

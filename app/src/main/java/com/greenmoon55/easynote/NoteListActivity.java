@@ -1,4 +1,4 @@
-package com.greenmoon55.easytodo;
+package com.greenmoon55.easynote;
 
 import android.app.ListActivity;
 import android.content.Intent;
@@ -20,30 +20,30 @@ import com.avos.avoscloud.AVUser;
 import java.util.List;
 
 
-public class TodoListActivity extends ListActivity {
+public class NoteListActivity extends ListActivity {
     private static final int ACTIVITY_CREATE = 0;
     private static final int ACTIVITY_EDIT = 1;
     private static final int ACTIVITY_AUTH = 2;
 
     private static final int DELETE_ID = Menu.FIRST + 1;
 
-    private volatile List<Todo> todos;
+    private volatile List<Note> notes;
 
     private class RemoteDataTask extends AsyncTask<Void, Void, Void> {
 
         @Override
         protected Void doInBackground(Void... params) {
-            todos = AVService.findTodos();
+            notes = AVService.findNotes();
             return null;
         }
 
         @Override
         protected void onPostExecute(Void result) {
-            TodoAdapter adapter = new TodoAdapter(TodoListActivity.this, todos);
+            NoteAdapter adapter = new NoteAdapter(NoteListActivity.this, notes);
             setListAdapter(adapter);
             registerForContextMenu(getListView());
             TextView empty = (TextView) findViewById(android.R.id.empty);
-            if (todos != null && !todos.isEmpty()) {
+            if (notes != null && !notes.isEmpty()) {
                 empty.setVisibility(View.INVISIBLE);
             } else {
                 empty.setVisibility(View.VISIBLE);
@@ -54,10 +54,10 @@ public class TodoListActivity extends ListActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (AVUser.getCurrentUser() == null) {
-            Intent intent = new Intent(TodoListActivity.this, AuthActivity.class);
+            Intent intent = new Intent(NoteListActivity.this, AuthActivity.class);
             startActivityForResult(intent, ACTIVITY_AUTH);
         }
-        setContentView(R.layout.activity_todo_list);
+        setContentView(R.layout.activity_note_list);
         new RemoteDataTask().execute();
     }
 
@@ -65,27 +65,27 @@ public class TodoListActivity extends ListActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_todo_list, menu);
+        getMenuInflater().inflate(R.menu.menu_note_list, menu);
         return true;
     }
 
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
-        menu.add(0, DELETE_ID, 0, "Delete Todo");
+        menu.add(0, DELETE_ID, 0, "Delete Note");
     }
 
     @Override
     public boolean onContextItemSelected(MenuItem item) {
         AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
-        final Todo todo = todos.get(info.position);
+        final Note note = notes.get(info.position);
         switch (item.getItemId()) {
             case DELETE_ID:
                 new RemoteDataTask() {
                     @Override
                     protected Void doInBackground(Void... params) {
                         try {
-                            todo.delete();
+                            note.delete();
                         } catch (AVException e) {
                             e.printStackTrace();
                         }
@@ -106,8 +106,8 @@ public class TodoListActivity extends ListActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        if (id == R.id.create_todo) {
-            createTodo();
+        if (id == R.id.create_note) {
+            createNote();
             return true;
         }
 
@@ -122,9 +122,9 @@ public class TodoListActivity extends ListActivity {
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
-        Intent i = new Intent(this, CreateTodo.class);
-        i.putExtra("content", todos.get(position).getString("content"));
-        i.putExtra("objectId", todos.get(position).getObjectId());
+        Intent i = new Intent(this, CreateNote.class);
+        i.putExtra("content", notes.get(position).getString("content"));
+        i.putExtra("objectId", notes.get(position).getObjectId());
         startActivityForResult(i, ACTIVITY_EDIT);
     }
 
@@ -146,8 +146,8 @@ public class TodoListActivity extends ListActivity {
         }
     }
 
-    private void createTodo() {
-        Intent i = new Intent(this, CreateTodo.class);
+    private void createNote() {
+        Intent i = new Intent(this, CreateNote.class);
         startActivityForResult(i, ACTIVITY_CREATE);
     }
 }

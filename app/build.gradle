@@ -5,7 +5,7 @@ android {
     buildToolsVersion "21.1.2"
 
     defaultConfig {
-        applicationId "com.greenmoon55.easytodo"
+        applicationId "com.greenmoon55.easynote"
         minSdkVersion 16
         targetSdkVersion 16
         versionCode 1
