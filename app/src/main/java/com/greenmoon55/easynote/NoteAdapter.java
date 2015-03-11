@@ -55,7 +55,8 @@ public class NoteAdapter extends BaseAdapter {
 
         Note note = notes.get(position);
         if (note != null) {
-            holder.note.setText(note.getContent());
+            String lines[] = note.getContent().split("\\r?\\n");
+            holder.note.setText(lines[0]);
         }
         return convertView;
     }

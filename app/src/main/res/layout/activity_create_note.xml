@@ -11,7 +11,7 @@
         android:layout_height="match_parent"
         android:layout_margin="10dp"
         android:gravity="top"
-        android:inputType="textAutoCorrect"
+        android:inputType="textMultiLine"
         android:scrollbars="vertical"
         android:textColor="#000" />
 </LinearLayout>

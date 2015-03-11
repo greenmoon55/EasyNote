@@ -42,7 +42,7 @@ public class NoteListActivity extends ListActivity {
             NoteAdapter adapter = new NoteAdapter(NoteListActivity.this, notes);
             setListAdapter(adapter);
             registerForContextMenu(getListView());
-            TextView empty = (TextView) findViewById(android.R.id.empty);
+            TextView empty = (TextView)findViewById(android.R.id.empty);
             if (notes != null && !notes.isEmpty()) {
                 empty.setVisibility(View.INVISIBLE);
             } else {
