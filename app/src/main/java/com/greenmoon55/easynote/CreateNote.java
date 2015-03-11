@@ -31,6 +31,9 @@ public class CreateNote extends Activity {
 
             contentText.setText(content);
         }
+
+        // Set cursor to the end of the text
+        contentText.setSelection(contentText.getText().length());
     }
 
 
