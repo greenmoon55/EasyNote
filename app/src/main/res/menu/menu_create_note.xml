@@ -3,6 +3,7 @@
     tools:context="com.greenmoon55.easynote.CreateNote">
     <item
         android:id="@+id/confirm"
+        android:icon="@drawable/ic_action_accept"
         android:showAsAction="always"
         android:title="Done" />
 </menu>
