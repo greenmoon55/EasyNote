@@ -64,11 +64,6 @@ public class CreateNote extends Activity {
             AVService.createOrUpdateTodo(objectId, content, saveCallback);
         }
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
         return super.onOptionsItemSelected(item);
     }
 }
