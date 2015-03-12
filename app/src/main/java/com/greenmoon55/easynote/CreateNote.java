@@ -57,22 +57,29 @@ public class CreateNote extends Activity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        if (id == R.id.confirm) {
-            SaveCallback saveCallback = new SaveCallback() {
-                @Override
-                public void done(AVException e) {
-                    Bundle bundle = new Bundle();
-                    bundle.putBoolean("success", e == null);
-                    Intent intent = new Intent();
-                    intent.putExtras(bundle);
-                    setResult(RESULT_OK, intent);
-                    finish();
-                }
-            };
-            String content = contentText.getText().toString();
-            AVService.createOrUpdateTodo(objectId, content, saveCallback);
+        String content = contentText.getText().toString();
+        switch (item.getItemId()) {
+            case R.id.confirm:
+                SaveCallback saveCallback = new SaveCallback() {
+                    @Override
+                    public void done(AVException e) {
+                        Bundle bundle = new Bundle();
+                        bundle.putBoolean("success", e == null);
+                        Intent intent = new Intent();
+                        intent.putExtras(bundle);
+                        setResult(RESULT_OK, intent);
+                        finish();
+                    }
+                };
+                AVService.createOrUpdateTodo(objectId, content, saveCallback);
+                break;
+            case R.id.menu_item_share:
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, content);
+                sendIntent.setType("text/plain");
+                startActivity(Intent.createChooser(sendIntent, getResources().getText(R.string.send_to)));
+                break;
         }
 
         return super.onOptionsItemSelected(item);

@@ -5,6 +5,7 @@
     <string name="content">Create Note here!</string>
     <string name="confirm">Done</string>
     <string name="empty">No notes</string>
+    <string name="send_to">Share text to...</string>
     <string name="title_activity_auth">AuthActivity</string>
     <string name="title_activity_create_note">Create Note</string>
     <string name="title_activity_edit_note">Edit Note</string>
