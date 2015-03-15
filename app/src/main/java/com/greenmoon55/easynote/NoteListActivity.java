@@ -127,6 +127,15 @@ public class NoteListActivity extends ListActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
         super.onActivityResult(requestCode, resultCode, intent);
+
+        if (requestCode == ACTIVITY_AUTH) {
+            if (resultCode != RESULT_OK) {
+                Toast toast = null;
+                toast = Toast.makeText(getApplicationContext(), "Login failed!", Toast.LENGTH_SHORT);
+                toast.show();
+                this.finish();
+            }
+        }
         if (intent == null) {
             return;
         }

@@ -23,19 +23,26 @@ public class AuthActivity extends Activity {
         SNS.loginWithCallback(this, SNSType.AVOSCloudSNSSinaWeibo, new SNSCallback() {
             @Override
             public void done(SNSBase base, SNSException e) {
-            if (e == null) {
-                SNS.loginWithAuthData(base.userInfo(), new LogInCallback<AVUser>() {
-                    @Override
-                    public void done(final AVUser user, AVException e) {
-                        if (e == null) {
-                            System.out.println(AVUser.getCurrentUser());
-                        } else {
-                            System.out.println("create new user with auth data error: " + e.getMessage());
+                if (e == null) {
+                    SNS.loginWithAuthData(base.userInfo(), new LogInCallback<AVUser>() {
+                        @Override
+                        public void done(final AVUser user, AVException e) {
+                            if (e == null) {
+                                System.out.println(AVUser.getCurrentUser());
+                                setResult(Activity.RESULT_OK);
+                            } else {
+                                System.out.println("create new user with auth data error: " + e.getMessage());
+                                e.printStackTrace();
+                                setResult(Activity.RESULT_CANCELED);
+                            }
+                            finish();
                         }
-                        finish();
-                    }
-                });
-            }
+                    });
+                } else {
+                    e.printStackTrace();
+                    setResult(Activity.RESULT_CANCELED);
+                    finish();
+                }
             }
         });
     }
