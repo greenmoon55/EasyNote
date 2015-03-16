@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<item name="primary" type="color">#2196F3</item>
+	<item name="primary_dark" type="color">#1976D2</item>
+	<!--   theme UI controls like checkboxes and text fields -->
+	<item name="accent" type="color">#ffffff</item>
+    <item name="background" type="color">#ffffff</item>
+    <item name="text_secondary" type="color">#D9000000</item>
+</resources>

@@ -8,11 +8,11 @@ android:background="#eee" >
     android:id="@+id/text"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:background="#FFF"
     android:padding="5sp"
     android:text="test text"
-    android:textColor="#343"
     android:textSize="25sp" >
+    <!--android:background="#FFF"-->
+    <!--android:textColor="#343"-->
 </TextView>
 
 </LinearLayout>
