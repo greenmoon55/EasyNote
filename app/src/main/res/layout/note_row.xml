@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 android:layout_width="match_parent"
-android:layout_height="wrap_content"
-android:background="#eee" >
+android:layout_height="wrap_content">
 
 <TextView
     android:id="@+id/text"
@@ -10,8 +9,8 @@ android:background="#eee" >
     android:layout_height="wrap_content"
     android:padding="5sp"
     android:text="test text"
-    android:textSize="25sp" >
-    <!--android:background="#FFF"-->
+    android:textSize="25sp"
+    android:background="#fff">
     <!--android:textColor="#343"-->
 </TextView>
 
