@@ -63,3 +63,4 @@ EasyNote 是一个简单的记笔记的应用，数据存储在 [LeanCloud](http
 ## 其他
 
 * 不准备支持 Android 5.0 之前的版本
+* I'm new to Android, any feedback or advice is welcomed!
