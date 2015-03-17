@@ -4,7 +4,7 @@
 
 EasyNote 是一个简单的记笔记的应用，数据存储在 [LeanCloud](http://leancloud.cn)，需要微博登录。
 
-本应用用到了Leancloud增删改查、ACL权限控制和SNS接入的功能。
+本应用用到了 Leancloud 增删改查、ACL 权限控制和 SNS 接入的功能。
 
 
 ## 效果截图
@@ -36,7 +36,7 @@ EasyNote 是一个简单的记笔记的应用，数据存储在 [LeanCloud](http
 
 #### 配置微博
 
-在后台选择 `管理/社交` 配置微博的 应用ID 与 应用 Secret Key, 在成功保存以后，页面上能够得到相应的回调 URL 和登录 URL。
+在后台选择 `管理/社交` 配置微博的 应用 ID 与 应用 Secret Key, 在成功保存以后，页面上能够得到相应的回调 URL 和登录 URL。
 
 请修改 `com.greenmoon55.easynote.AuthActivity.onCreate`, 将 `SNS.setupPlatform` 里的地址配置成 `登录 URL`，同时请将回调 URL 填写到对应平台的 App 管理中心（比如新浪开放平台）。
 
