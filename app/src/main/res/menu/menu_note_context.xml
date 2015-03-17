@@ -1,0 +1,7 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".TodoListActivity">
+    <item
+        android:id="@+id/delete_note"
+        android:title="Delete Note" />
+</menu>

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView.*;
@@ -72,7 +73,9 @@ public class NoteListActivity extends ListActivity {
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
-        menu.add(0, DELETE_ID, 0, "Delete Note");
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_note_context, menu);
+        //menu.add(0, DELETE_ID, 0, "Delete Note");
     }
 
     @Override
@@ -80,7 +83,7 @@ public class NoteListActivity extends ListActivity {
         AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
         final Note note = notes.get(info.position);
         switch (item.getItemId()) {
-            case DELETE_ID:
+            case R.id.delete_note:
                 new RemoteDataTask() {
                     @Override
                     protected Void doInBackground(Void... params) {
